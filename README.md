@@ -1,4 +1,4 @@
 ## jpa2 ##
 
 -----
-Estudos de jps2/Hibernate
+Estudos de jpa2/Hibernate
