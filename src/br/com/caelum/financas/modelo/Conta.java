@@ -1,4 +1,4 @@
-package br.caelum.financas.modelo;
+package br.com.caelum.financas.modelo;
 
 import javax.persistence.*;
 

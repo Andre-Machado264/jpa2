@@ -1,7 +1,8 @@
-package br.caelum.financas.teste;
+package br.com.caelum.financas.teste;
 
 import javax.persistence.*;
-import br.caelum.financas.modelo.Conta;
+
+import br.com.caelum.financas.modelo.Conta;
 
 public class TestaInsereConta {
 
