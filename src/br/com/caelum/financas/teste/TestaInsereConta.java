@@ -7,6 +7,8 @@ import br.com.caelum.financas.modelo.Conta;
 public class TestaInsereConta {
 
 	public static void main(String[] args) {
+		long inicio = System.currentTimeMillis();
+		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("controlefinancas");
 		EntityManager entityManager = factory.createEntityManager();
 		
@@ -19,7 +21,10 @@ public class TestaInsereConta {
 		entityManager.getTransaction().begin();
 		entityManager.persist(conta);
 		entityManager.getTransaction().commit();
-		System.out.println("Conta Gravado com sucesso");
+		System.out.println("Conta Gravada com sucesso");
+		
+		long fim = System.currentTimeMillis();
+		System.out.println("Executado em: " + (fim - inicio));
 	}
 
 }
