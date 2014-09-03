@@ -11,7 +11,7 @@ public class TestaInsereConta {
 		EntityManager entityManager = factory.createEntityManager();
 		
 		Conta conta = new Conta();
-		conta.setTitular("Jpse Roberto");
+		conta.setTitular("Jose Roberto");
 		conta.setBanco("Banco do Brasil");
 		conta.setNumero("123456-6");
 		conta.setAgencia("0999");
