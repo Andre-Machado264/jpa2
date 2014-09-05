@@ -16,7 +16,7 @@ public class TestaInsereConta {
 		Conta conta = new Conta();
 		conta.setTitular("Andre Oliveira");
 		conta.setBanco("Banco do Brasil");
-		conta.setNumero("123321-6");
+		conta.setNumero("123456-6");
 		conta.setAgencia("0998");
 		
 		
@@ -26,6 +26,11 @@ public class TestaInsereConta {
 		contaDAO.adiciona(conta);
 		entityManager.getTransaction().commit();
 		System.out.println("Conta Gravada com sucesso");
+		
+		/*entityManager.getTransaction().begin();
+		conta.setTitular("Jose Ribeiro");
+		entityManager.getTransaction().commit();
+		*/
 		
 		long fim = System.currentTimeMillis();
 		System.out.println("Executado em: " + (fim - inicio));
