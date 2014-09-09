@@ -7,35 +7,39 @@ import java.util.Calendar;
 
 import javax.persistence.*;
 
+import br.com.caelum.financas.dao.ContaDAO;
+import br.com.caelum.financas.dao.MovimentacaoDAO;
 //import br.com.caelum.financas.dao.ContaDAO;
 import br.com.caelum.financas.infra.JPAUtil;
 import br.com.caelum.financas.modelo.Conta;
 import br.com.caelum.financas.modelo.Movimentacao;
 import br.com.caelum.financas.modelo.TipoMovimentacao;
 
-public class TestaMovimentacao {
+public class TestaSalvaMovimentacaoComConta {
 
 	public static void main(String[] args) {
 		EntityManager entityManager = new JPAUtil().getEntityManager();
 		entityManager.getTransaction().begin();
 		
+		ContaDAO contaDAO = new ContaDAO(entityManager);
 		Conta conta = new Conta();
-		conta.setTitular("Maria");
-		conta.setBanco("Banco Santander");
-		conta.setNumero("99999-9");
-		conta.setAgencia("999");
-		entityManager.persist(conta);
 		
+		conta.setTitular("Jose");
+		conta.setBanco("Banco Bradesco");
+		conta.setNumero("88888-8");
+		conta.setAgencia("888");
+		contaDAO.adiciona(conta);
+		
+		MovimentacaoDAO movimentacaoDao = new MovimentacaoDAO(entityManager);
 		Movimentacao movimentacao = new Movimentacao();
+		
 		movimentacao.setConta(conta);
-		movimentacao.setDescricao("Conta de luz - setembro/2014");
+		movimentacao.setDescricao("Conta de Agua - setembro/2014");
 		movimentacao.setData(Calendar.getInstance());
 		movimentacao.setTipoMovimentacao(TipoMovimentacao.SAIDA);
-		movimentacao.setValor(new BigDecimal("54"));
+		movimentacao.setValor(new BigDecimal("80"));
+		movimentacaoDao.adiciona(movimentacao);
 		
-//		ContaDAO contaDAO = new ContaDAO(entityManager);
-		
-		entityManager.persist(movimentacao);
 		entityManager.getTransaction().commit();
 		entityManager.close();
 		System.out.println("Conta Gravada com sucesso");
