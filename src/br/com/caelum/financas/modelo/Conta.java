@@ -9,6 +9,7 @@ public class Conta {
 	@GeneratedValue
 	private Integer id;
 	
+	
 	private String titular;
 	private String agencia;
 	private String numero;
@@ -40,5 +41,8 @@ public class Conta {
 	}
 	public void setBanco(String banco) {
 		this.banco = banco;
+	}
+	public Integer getId() {
+		return id;
 	}
 }

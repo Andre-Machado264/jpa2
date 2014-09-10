@@ -1,14 +1,18 @@
 package br.com.caelum.financas.dao;
 
 import javax.persistence.*;
+
 import java.util.*;
 
+import br.com.caelum.financas.modelo.Conta;
 import br.com.caelum.financas.modelo.Movimentacao;
 
 public class MovimentacaoDAO {
 	private final DAO<Movimentacao> dao;
+	private final EntityManager em;
 	
 	public MovimentacaoDAO(EntityManager em){
+		this.em = em;
 		dao = new DAO<Movimentacao>(em, Movimentacao.class);
 	}
 	
@@ -26,5 +30,13 @@ public class MovimentacaoDAO {
 	
 	public void remove(Movimentacao Movimentacao){
 		dao.remove(Movimentacao);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Movimentacao> listaTodasMovimentacoes(Conta conta){
+		String jpql = "select m from movimentacao m " + "where m.conta = :pConta order by m.valor desc";
+		Query query = this.em.createQuery(jpql);
+		query.setParameter("conta", conta);
+		return query.getResultList();
 	}
 }
