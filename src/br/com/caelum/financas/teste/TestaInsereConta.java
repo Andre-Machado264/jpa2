@@ -14,7 +14,7 @@ public class TestaInsereConta {
 		EntityManager entityManager = new JPAUtil().getEntityManager();
 		
 		Conta conta = new Conta();
-		conta.setTitular("Andre Oliveira");
+		conta.setTitular("Andre Machado");
 		conta.setBanco("Banco do Brasil");
 		conta.setNumero("123456-6");
 		conta.setAgencia("0998");
@@ -22,7 +22,6 @@ public class TestaInsereConta {
 		
 		ContaDAO contaDAO = new ContaDAO(entityManager);
 		entityManager.getTransaction().begin();
-//		entityManager.persist(conta);
 		contaDAO.adiciona(conta);
 		entityManager.getTransaction().commit();
 		System.out.println("Conta Gravada com sucesso");
