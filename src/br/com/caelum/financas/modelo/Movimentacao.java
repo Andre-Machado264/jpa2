@@ -1,11 +1,14 @@
 package br.com.caelum.financas.modelo;
 
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.*;
 
 @Entity
 public class Movimentacao {
+	
 	@Id
 	@GeneratedValue
 	private Integer id;
@@ -17,12 +20,19 @@ public class Movimentacao {
 	@ManyToOne
 	private Conta conta;
 	
+	@ManyToMany
+	private List<Tag> tags = new ArrayList<Tag>();
+	
 	public Conta getConta() {
 		return conta;
 	}
-
+	
 	public void setConta(Conta conta) {
 		this.conta = conta;
+	}
+	
+	public void setTag(Tag tag){
+		tags.add(tag);
 	}
 
 	@Enumerated(EnumType.STRING)
