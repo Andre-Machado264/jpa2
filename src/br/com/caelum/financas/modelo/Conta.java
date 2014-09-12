@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
+@Table(uniqueConstraints= {@UniqueConstraint(columnNames="gerente_id")})
 public class Conta {
 
 	@Id
@@ -13,10 +14,21 @@ public class Conta {
 	@OneToMany(mappedBy="conta")
 	private List<Movimentacao> movimentacoes;
 	
+	@OneToOne
+	private Gerente gerente;
+
 	private String titular;
 	private String agencia;
 	private String numero;
 	private String banco;
+	
+	
+	public Gerente getGerente() {
+		return gerente;
+	}
+	public void setGerente(Gerente gerente) {
+		this.gerente = gerente;
+	}
 	
 	public String getTitular() {
 		return titular;
