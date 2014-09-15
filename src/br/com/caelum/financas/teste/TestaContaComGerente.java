@@ -15,21 +15,22 @@ public class TestaContaComGerente {
 		entityManager.getTransaction().begin();
 		
 		Gerente gerente = new Gerente();
-		gerente.setNome("Alfredo");
-		gerente.setTelefone("38211158");
-		gerente.setCidades("Lavras");
-		gerente.setEstado("MG");
-		gerente.setRua("Francisco de Andrade");
+		gerente.setNome("Francisco");
+		gerente.setTelefone("38218745");
+		gerente.endereco.setRua("JK");
+		gerente.endereco.setCidade("Lavras");
+		gerente.endereco.setEstado("MG");
+
 		
 		entityManager.persist(gerente);
 		
 		ContaDAO contaDAO = new ContaDAO(entityManager);
 		Conta conta = new Conta();
 		
-		conta.setTitular("Jose Francisco");
-		conta.setBanco("Banco Bradesco");
-		conta.setNumero("88888-8");
-		conta.setAgencia("888");
+		conta.setTitular("Jose Roberto");
+		conta.setBanco("Banco do Brasil");
+		conta.setNumero("99999-9");
+		conta.setAgencia("999");
 		conta.setGerente(gerente);
 		contaDAO.adiciona(conta);
 		
