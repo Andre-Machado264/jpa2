@@ -22,6 +22,10 @@ public class Conta {
 	private String numero;
 	private String banco;
 	
+	public void setId(int id){
+		this.id = id;
+	}
+	
 	
 	public Gerente getGerente() {
 		return gerente;

@@ -25,7 +25,7 @@ public class TestaSalvaMovimentacaoComConta {
 		Conta conta = new Conta();
 		
 		conta.setTitular("Jose Francisco");
-		conta.setBanco("Banco Bradesco");
+		conta.setBanco("Banco do Brasil");
 		conta.setNumero("88888-8");
 		conta.setAgencia("888");
 		contaDAO.adiciona(conta);

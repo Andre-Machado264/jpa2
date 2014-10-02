@@ -34,9 +34,18 @@ public class MovimentacaoDAO {
 	
 	@SuppressWarnings("unchecked")
 	public List<Movimentacao> listaTodasMovimentacoes(Conta conta){
-		String jpql = "select m from movimentacao m " + "where m.conta = :pConta order by m.valor desc";
+		String jpql = "select m from Movimentacao m where m.conta = :pConta order by m.valor desc";
 		Query query = this.em.createQuery(jpql);
-		query.setParameter("conta", conta);
+		query.setParameter("pConta", conta);
+		return query.getResultList();
+	}
+	
+	public List<Movimentacao> listaTodasMovimentacoesPorNome(String nome){
+		
+		String jpql = "select m from Movimentacao m where m.conta.banco like :nomeBanco";
+		Query query = this.em.createQuery(jpql);
+		query.setParameter("nomeBanco", "%"+nome+"%");
+		
 		return query.getResultList();
 	}
 }
