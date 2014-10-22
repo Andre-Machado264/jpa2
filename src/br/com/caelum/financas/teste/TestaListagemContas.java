@@ -13,10 +13,14 @@ public class TestaListagemContas {
 		EntityManager em = new JPAUtil().getEntityManager();
 		ContaDAO dao = new ContaDAO(em);
 		em.getTransaction().begin();
-		List<Conta> lista = dao.lista();
+		List<Conta> lista = dao.listaContaComGerente();
 		
 		for (Conta conta : lista){
 			System.out.println(conta.getTitular());
+			if(conta.getGerente() != null)
+				System.out.println("Gerente: " +conta.getGerente().getNome());
+//			if(conta.getMovimentacoes() != null)
+//				System.out.println(conta.getMovimentacoes().size());
 		}
 		
 		em.getTransaction().commit();

@@ -40,6 +40,7 @@ public class MovimentacaoDAO {
 		return query.getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Movimentacao> listaTodasMovimentacoesPorNome(String nome){
 		
 		String jpql = "select m from Movimentacao m where m.conta.banco like :nomeBanco";

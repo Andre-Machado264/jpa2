@@ -6,8 +6,8 @@ import java.util.*;
 
 public class DAO<T> {
 	
-	private final EntityManager em;
-	private final Class<T> classe;
+	protected final EntityManager em;
+	protected final Class<T> classe;
 	
 	public DAO (EntityManager em, Class<T> classe){
 		this.em = em;
